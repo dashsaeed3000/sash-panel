@@ -13792,7 +13792,7 @@ input[type=checkbox]:not(:disabled).tabbed:focus~.lever::after {
 
 .navbar-nav {
 	margin-right: 0;
-	float: right;
+	float: left;
 	flex-direction: unset;
 	padding: 7px
 }

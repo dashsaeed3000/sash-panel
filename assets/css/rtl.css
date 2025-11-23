@@ -1,0 +1,106 @@
+/* RTL overrides for Sash template
+   This file flips sidebar to the right and swaps common float/margin/text alignment
+   It intentionally uses !important for utility overrides to take precedence over vendor CSS.
+*/
+html[dir="rtl"], body.rtl {
+  direction: rtl;
+}
+
+/* Sidebar on the right */
+html[dir="rtl"] .sidebar,
+body.rtl .sidebar {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/* Adjust sidebar border */
+html[dir="rtl"] .sidebar .menu,
+body.rtl .sidebar .menu {
+  border-left: 1px solid #e9edf4 !important;
+  border-right: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Flip internal sidebar floats */
+body.rtl .sidebar .user-info .admin-image>img { float: right !important; }
+body.rtl .sidebar .user-info .admin-action-info { padding-left: 0 !important; padding-right: 20px !important; }
+body.rtl .sidebar .user-info .admin-action-info>span { float: right !important; }
+body.rtl .sidebar .user-info .admin-action-info h3 { float: right !important; text-align: right !important; }
+body.rtl .sidebar .user-info .admin-action-info>ul { float: right !important; margin-left: 0 !important; margin-right: -5px !important; }
+body.rtl .sidebar .user-info .admin-action-info>ul li { float: right !important; margin-right: 1px !important; }
+body.rtl .sidebar .user-info .admin-action-info>ul li a { float: right !important; }
+body.rtl .sidebar .user-info .quick-stats { float: right !important; text-align: right !important; }
+body.rtl .sidebar .user-info .quick-stats>h5 { float: right !important; text-align: right !important; }
+body.rtl .sidebar .user-info .quick-stats>ul>li { float: right !important; }
+body.rtl .sidebar .user-info .quick-stats>ul>li>span { float: right !important; }
+
+/* Swap float utilities */
+body.rtl .float-left { float: right !important; }
+body.rtl .float-right { float: left !important; }
+body.rtl .float-start { float: right !important; }
+body.rtl .float-end { float: left !important; }
+
+/* Swap text alignment utilities */
+body.rtl .text-left { text-align: right !important; }
+body.rtl .text-right { text-align: left !important; }
+
+/* Common margin helpers (Bootstrap spacing) - invert left/right */
+body.rtl .mr-0 { margin-left: 0 !important; margin-right: 0 !important; }
+body.rtl .mr-1 { margin-left: .25rem !important; margin-right: 0 !important; }
+body.rtl .mr-2 { margin-left: .5rem !important; margin-right: 0 !important; }
+body.rtl .mr-3 { margin-left: 1rem !important; margin-right: 0 !important; }
+body.rtl .mr-4 { margin-left: 1.5rem !important; margin-right: 0 !important; }
+body.rtl .mr-5 { margin-left: 3rem !important; margin-right: 0 !important; }
+/* custom sizes used in template */
+body.rtl .mr-8 { margin-left: 2rem !important; margin-right: 0 !important; }
+
+body.rtl .ml-0 { margin-right: 0 !important; margin-left: 0 !important; }
+body.rtl .ml-1 { margin-right: .25rem !important; margin-left: 0 !important; }
+body.rtl .ml-2 { margin-right: .5rem !important; margin-left: 0 !important; }
+body.rtl .ml-3 { margin-right: 1rem !important; margin-left: 0 !important; }
+body.rtl .ml-4 { margin-right: 1.5rem !important; margin-left: 0 !important; }
+body.rtl .ml-5 { margin-right: 3rem !important; margin-left: 0 !important; }
+
+/* Swap directional icons that use float classes inside header/footer */
+body.rtl .float-right.sidemenu-icon-2 { float: left !important; }
+
+/* Some components rely on left/right positioning for panels */
+body.rtl .sidebar-overlay { left: auto !important; right: 0 !important; }
+
+/* Ensure dropdowns appear correctly: use start/end logical swaps */
+body.rtl .dropdown-menu { right: 0; left: auto; }
+
+/* Safety: ensure container text alignment is right by default */
+body.rtl .container-fluid, body.rtl .container { text-align: right; }
+
+/* Override any LTR helper left/right borders if present */
+body.rtl .border-right { border-left: 1px solid rgba(0,0,0,.125) !important; border-right: none !important; }
+body.rtl .border-left { border-right: 1px solid rgba(0,0,0,.125) !important; border-left: none !important; }
+
+/* Some code blocks in index.html contain examples mentioning 'ltr' - hide or adjust visuals if needed */
+body.rtl pre code { direction: ltr; unicode-bidi: isolate-override; }
+
+/* If further tweaks needed, we can extend this file. */
+
+/* Main content spacing: swap left margin to right so content doesn't sit under sidebar */
+html[dir="rtl"] section.content,
+body.rtl section.content {
+  margin: 0 230px 0 0 !important;
+}
+
+/* Ensure any element that explicitly referenced left/right for the navbar on small screens is mirrored */
+@media (max-width: 767px) {
+  html[dir="rtl"] .navbar .dropdown-menu,
+  body.rtl .navbar .dropdown-menu {
+    margin-right: -230px !important;
+    margin-left: auto !important;
+  }
+}
+
+/* Extra: move leftsidebar id if templates reference it directly */
+html[dir="rtl"] #leftsidebar,
+body.rtl #leftsidebar {
+  left: auto !important;
+  right: 0 !important;
+}
